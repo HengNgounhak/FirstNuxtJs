@@ -1,0 +1,14 @@
+{
+  "Author": {
+    "description": "Auto imported from components/global/Author.vue"
+  },
+  "InfoBox": {
+    "description": "Auto imported from components/global/InfoBox.vue"
+  },
+  "AppSearchInput": {
+    "description": "Auto imported from components/AppSearchInput.vue"
+  },
+  "PrevNext": {
+    "description": "Auto imported from components/PrevNext.vue"
+  }
+}

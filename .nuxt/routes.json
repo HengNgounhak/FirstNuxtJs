@@ -1,0 +1,23 @@
+[
+  {
+    "name": "blog-author-author",
+    "path": "/blog/author/:author?",
+    "component": "/Users/mac/Desktop/NuxtJs/pages/blog/author/_author.vue",
+    "chunkName": "pages/blog/author/_author",
+    "_name": "_515d6920"
+  },
+  {
+    "name": "blog-slug",
+    "path": "/blog/:slug?",
+    "component": "/Users/mac/Desktop/NuxtJs/pages/blog/_slug.vue",
+    "chunkName": "pages/blog/_slug",
+    "_name": "_58c81730"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/mac/Desktop/NuxtJs/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_8f423562"
+  }
+]
