@@ -9,5 +9,11 @@
         "build": "nuxt build",
         "start": "nuxt start",
         "generate": "nuxt generate"
+    },
+    "devDependencies": {
+        "@nuxtjs/tailwindcss": "^4.2.1",
+        "autoprefixer": "^10.3.7",
+        "postcss": "^8.3.9",
+        "tailwindcss": "^2.2.17"
     }
 }

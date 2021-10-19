@@ -1,40 +1,23 @@
 <template>
-  <!-- <article>
-    <nuxt-content :document="article" />
-    <p>Article last updated: {{ formatDate(article.updatedAt) }}</p>
-  </article> -->
-  <article class="nuxt-content">
-    <h1>{{ article.title }}</h1>
-    <p>{{ article.description }}</p>
-    <img :alt="article.alt" :src="require(`~/assets/images/${article.img}`)"/>
-    <p>Article last updated: {{ formatDate(article.updatedAt) }}</p>
-
-    <nuxt-content :document="article" />
-    <!-- <nav>
-      <ul>
-        <li v-for="link of article.toc" :key="link.id" >
-          <NuxtLink :to="`#${link.id}`" :class="{ 'py-2': link.depth === 2, 'ml-2 pb-2': link.depth === 3 }">{{ link.text }}</NuxtLink>
-        </li>
-      </ul>
-    </nav> -->
-
-    <Author :author="article.author" />
-
-    <prev-next :prev="prev" :next="next" />
-
-    <app-search-input/>
+  <article class="nuxt-content flex xs:flex-col lg:flex-row xs:m-auto">
+    <div class="lg:w-2/4 lg:h-screen xs:max-h-100 text-white lg:sticky top-0 xs:static xs:w-full bg-center bg-cover bg-no-repeat p-5" :style="{ 'background-image': 'url('+article.img+')'}">
+      <div class="flex justify-between mb-8">
+        <nuxt-link to="/"><h1 class="text-white text-4xl font-bold">Blog Posts</h1></nuxt-link>
+        <app-search-input/>
+      </div>
+      <p style="margin-top: 80px">{{ formatDate(article.updatedAt) }} . {{ article.author.name }}</p>
+      <h1 class="text-8xl font-bold" >{{ article.title }}</h1>
+    </div>
+    <div class="lg:w-2/4 xs:w-full p-8">
+      <h1 class="text-3xl font-bold mb-2">{{ article.title }}</h1>
+      <p>{{ article.description }}</p>
+      <p>Article last updated: {{ formatDate(article.updatedAt) }}</p>
+      <nuxt-content class="mt-3 mb-8" :document="article" />
+      <Author :author="article.author" />
+      <prev-next :prev="prev" :next="next" />
+    </div>
 
   </article>
-  <!-- <article>
-    <h1>{{ article.title }}</h1>
-    <p>{{ article.description }}</p>
-    <img :src="require(`~/assets/images/${article.img}`)" :alt="article.alt" />
-    <p>Article last updated: {{ formatDate(article.updatedAt) }}</p>
-
-    <nuxt-content :document="article" />
-
-    <Author :author="article.author" />
-  </article> -->
 </template>
 <script>
 import AppSearchInput from '../../components/AppSearchInput.vue'
@@ -74,7 +57,5 @@ import PrevNext from '../../components/PrevNext.vue'
     font-weight: bold;
     font-size: 22px;
   }
-    .nuxt-content p {
-    margin-bottom: 20px;
-  }
+   
 </style>

@@ -1,14 +1,15 @@
 <template>
-  <div>
+  <div class="relative">
     <input
+      class="border-2 border-gray-500 px-3 py-2 text-center rounded-md"
       v-model="searchQuery"
       type="search"
       autocomplete="off"
       placeholder="Search Articles"
     />
-    <ul v-if="articles.length">
+    <ul v-if="articles.length" class="absolute top-5 bg-white p-4 rounded-md">
       <li v-for="article of articles" :key="article.slug">
-        <NuxtLink :to="{ name: 'blog-slug', params: { slug: article.slug } }">
+        <NuxtLink :to="{ name: 'blog-slug', params: { slug: article.slug } }" class="hover:text-green-700">
           {{ article.title }}
         </NuxtLink>
       </li>
