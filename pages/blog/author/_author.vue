@@ -9,12 +9,6 @@
         <ul >
             <li v-for="article in articles" :key="article.slug">
                 <NuxtLink :to="{ name: 'blog-slug', params: { slug: article.slug } }">
-                <!-- <img :src="article.img" :alt="article.alt" />
-                <div>
-                    <h2>{{ article.title }}</h2>
-                    <p>{{ article.description }}</p>
-                    <p>{{ formatDate(article.updatedAt) }}</p>
-                </div> -->
                 <div class="bg-white shadow-md border border-gray-200 hover:shadow-xl rounded-lg mb-7">
                     <div class="rounded-t-lg w-full bg-center bg-cover bg-no-repeat" :style="{ 'background-image': 'url('+article.img+'); height: 300px'}"></div>
                     <div class="p-5">
@@ -30,27 +24,34 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
   export default {
-    async asyncData({ $content, params }) {
-      const articles = await $content('articles', params.slug)
-        .where({
-          'author.name': {
-            $regex: [params.author, 'i']
-          }
-        })
-        .without('body')
-        .sortBy('createdAt', 'asc')
-        .fetch()
+    // async asyncData({ $content, params }) {
+    //   const articles = await $content('articles', params.slug)
+    //     .where({
+    //       'author.name': {
+    //         $regex: [params.author, 'i']
+    //       }
+    //     })
+    //     .without('body')
+    //     .sortBy('createdAt', 'asc')
+    //     .fetch()
 
-      return {
-        articles
-      }
+    //   return {
+    //     articles
+    //   }
+    // },
+    async asyncData({ store, params }) {
+        await store.dispatch('anAuthor', {paramSlug: params.slug, paramsAuthor: params.author})
     },
     methods: {
         formatDate(date) {
         const options = { year: 'numeric', month: 'long', day: 'numeric' }
         return new Date(date).toLocaleDateString('en', options)
         }
+    },
+    computed: {
+        ...mapState(['articles'])
     }
   }
 </script>

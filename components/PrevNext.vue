@@ -5,7 +5,7 @@
       :to="{ name: 'blog-slug', params: { slug: prev.slug } }"
       class="font-bold text-primary hover:underline"
     >
-      {{ prev.title }}
+        {{ prev.title }}
     </NuxtLink>
     <span v-else>&nbsp;</span>
     <NuxtLink
@@ -13,7 +13,7 @@
       :to="{ name: 'blog-slug', params: { slug: next.slug } }"
       class="font-bold hover:underline"
     >
-      {{ next.title }}
+        {{ next.title }}
     </NuxtLink>
     <span v-else>&nbsp;</span>
   </div>

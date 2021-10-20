@@ -23,28 +23,36 @@
 import AppSearchInput from '../../components/AppSearchInput.vue'
 import Author from '../../components/global/Author.vue'
 import PrevNext from '../../components/PrevNext.vue'
+import { mapState } from 'vuex'
+
   export default {
   components: { Author, PrevNext, AppSearchInput },
-  async asyncData({ $content, params }) {
-    const article = await $content('articles', params.slug).fetch()
+  // async asyncData({ $content, params }) {
+  //   const article = await $content('articles', params.slug).fetch()
 
-    const [prev, next] = await $content('articles')
-    .only(['title', 'slug'])
-    .sortBy('createdAt', 'asc')
-    .surround(params.slug)
-    .fetch()
+  //   const [prev, next] = await $content('articles')
+  //   .only(['title', 'slug'])
+  //   .sortBy('createdAt', 'asc')
+  //   .surround(params.slug)
+  //   .fetch()
 
-    return {
-      article,
-      prev,
-      next
-    }
+  //   return {
+  //     article,
+  //     prev,
+  //     next
+  //   }
+  // },
+  async fetch({ store, params }) {
+    await store.dispatch('anArticle', {paramSlug: params.slug});
   },
   methods: {
     formatDate(date) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' }
       return new Date(date).toLocaleDateString('en', options)
     }
+  },
+  computed:{
+    ...mapState(['article', 'prev', 'next'])
   }
 }
 </script>

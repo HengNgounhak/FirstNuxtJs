@@ -22,19 +22,27 @@
 </template>
 <script>
 import AppSearchInput from '../components/AppSearchInput.vue'
-  export default {
-    components: { AppSearchInput },
-    async asyncData({ $content, params }) {
-      const articles = await $content('articles')
-        .only(['title', 'description', 'img', 'slug', 'author'])
-        .sortBy('createdAt', 'asc')
-        .fetch()
+import { mapState } from 'vuex'
 
-      return {
-        articles
-      }
-    }
+export default {
+  components: { AppSearchInput },
+  // async asyncData({ $content, params }) {
+  //   const articles = await $content('articles')
+  //     .only(['title', 'description', 'img', 'slug', 'author'])
+  //     .sortBy('createdAt', 'asc')
+  //     .fetch()
+
+  //   return {
+  //     articles
+  //   }
+  // },
+  async fetch({ store }) {
+    await store.dispatch('getArticle');
+  },
+  computed: {
+    ...mapState(['articles'])
   }
+}
 </script>
 <style>
     ul{
