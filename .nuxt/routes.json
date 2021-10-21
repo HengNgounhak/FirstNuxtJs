@@ -1,5 +1,12 @@
 [
   {
+    "name": "newarticle",
+    "path": "/newarticle",
+    "component": "/Users/mac/Desktop/NuxtJs/pages/newarticle.vue",
+    "chunkName": "pages/newarticle",
+    "_name": "_48436b29"
+  },
+  {
     "name": "blog-author-author",
     "path": "/blog/author/:author?",
     "component": "/Users/mac/Desktop/NuxtJs/pages/blog/author/_author.vue",

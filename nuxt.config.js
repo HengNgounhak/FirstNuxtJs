@@ -9,5 +9,6 @@ export default {
             }
         },
         nestedProperties: ['author.name']
-    }
+    },
+    plugins: ['@/plugins/ant-design-vue']
 }

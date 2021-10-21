@@ -16,6 +16,7 @@ import { createStore } from './store.js'
 import nuxt_plugin_plugin_44d3604e from 'nuxt_plugin_plugin_44d3604e' // Source: ./components/plugin.js (mode: 'all')
 import nuxt_plugin_pluginclient_d56af256 from 'nuxt_plugin_pluginclient_d56af256' // Source: ./content/plugin.client.js (mode: 'client')
 import nuxt_plugin_pluginserver_09f80f46 from 'nuxt_plugin_pluginserver_09f80f46' // Source: ./content/plugin.server.js (mode: 'server')
+import nuxt_plugin_antdesignvue_25c3b791 from 'nuxt_plugin_antdesignvue_25c3b791' // Source: ../plugins/ant-design-vue (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -222,6 +223,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (process.server && typeof nuxt_plugin_pluginserver_09f80f46 === 'function') {
     await nuxt_plugin_pluginserver_09f80f46(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_antdesignvue_25c3b791 === 'function') {
+    await nuxt_plugin_antdesignvue_25c3b791(app.context, inject)
   }
 
   // Lock enablePreview in context
